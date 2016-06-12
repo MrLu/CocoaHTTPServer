@@ -51,11 +51,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 	DDLogInfo(@"Setting document root: %@", webPath);
 	
 	[httpServer setDocumentRoot:webPath];
+    [httpServer setPort:8080];
 
     [self startServer];
     
     // Add the view controller's view to the window and display.
-    [window addSubview:viewController.view];
+//    [window addSubview:viewController.view];
+    window.rootViewController = viewController;
     [window makeKeyAndVisible];
     
     return YES;

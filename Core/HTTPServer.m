@@ -1,7 +1,7 @@
 #import "HTTPServer.h"
 #import "GCDAsyncSocket.h"
 #import "HTTPConnection.h"
-#import "WebSocket.h"
+#import "MLWebSocket.h"
 #import "HTTPLogging.h"
 
 #if ! __has_feature(objc_arc)
@@ -461,7 +461,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 			
 			// Stop all WebSocket connections the server owns
 			[webSocketsLock lock];
-			for (WebSocket *webSocket in webSockets)
+			for (MLWebSocket *webSocket in webSockets)
 			{
 				[webSocket stop];
 			}
@@ -482,7 +482,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	return result;
 }
 
-- (void)addWebSocket:(WebSocket *)ws
+- (void)addWebSocket:(MLWebSocket *)ws
 {
 	[webSocketsLock lock];
 	
